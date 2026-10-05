@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .form-container { max-width: 600px; margin: 50px auto; background: #18202c; padding: 40px; border: 1px solid #d4af37; border-radius: 4px; }
+    .form-title { color: #d4af37; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; color: #ccc; margin-bottom: 8px; font-size: 14px; }
+    .form-group input, .form-group select { width: 100%; padding: 12px; background: #0f141d; border: 1px solid #2a3546; color: #fff; border-radius: 4px; }
+    .form-group input:focus { border-color: #d4af37; outline: none; }
+    .btn-submit { width: 100%; background: #d4af37; color: #0f141d; padding: 14px; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+    .btn-submit:hover { background: #fff; }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Réservation de Séjour</h2>
+    <form action="/reservation" method="POST">
+        <div class="form-group">
+            <label>Nom complet</label>
+            <input type="text" name="nom" required placeholder="Ex: Nossaiba El Aaabsi">
+        </div>
+        <div class="form-group">
+            <label>Adresse Email</label>
+            <input type="email" name="email" required placeholder="Ex: Nossaiba@gmail.com">
+        </div>
+        <div class="form-group">
+            <label>Identifiant Chambre (ID)</label>
+            <input type="number" name="id_chambre" value="1" required>
+        </div>
+        <div class="form-group">
+            <label>Date d'arrivée</label>
+            <input type="date" name="date_arrivee" required>
+        </div>
+        <div class="form-group">
+            <label>Date de départ</label>
+            <input type="date" name="date_depart" required>
+        </div>
+        <button type="submit" class="btn-submit">Confirmer la Réservation</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .hero { height: 65vh; background: linear-gradient(rgba(15,20,29,0.5), rgba(15,20,29,0.8)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1350&q=80') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero h1 { font-size: 42px; font-weight: normal; letter-spacing: 2px; }
+    .hero p { color: #d4af37; font-style: italic; margin: 10px 0 25px; }
+
+    #chambres, #services { scroll-margin-top: 90px; padding: 50px; max-width: 1200px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 28px; color: #d4af37; margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    
+    .card-hotel, .service-card { background: #18202c; border: 1px solid #2a3546; border-radius: 4px; overflow: hidden; transition: 0.3s; }
+    .card-hotel:hover { transform: translateY(-4px); border-color: #d4af37; }
+    .card-img { width: 100%; height: 200px; object-fit: cover; }
+    .card-body, .service-card { padding: 20px; }
+    .card-title, .service-card h3 { font-size: 18px; color: #fff; margin-bottom: 8px; }
+    .service-card h3 { color: #d4af37; }
+    .card-price { color: #d4af37; font-size: 16px; font-weight: bold; margin: 10px 0; }
+    .btn-card { display: block; text-align: center; border: 1px solid #d4af37; color: #d4af37; padding: 8px 0; text-decoration: none; font-size: 12px; text-transform: uppercase; transition: 0.3s; }
+    .btn-card:hover { background: #d4af37; color: #0f141d; }
+</style>
+
+<div class="hero">
+    <h1>UNE EXPÉRIENCE INOUBLIABLE</h1>
+    <p>Luxe, Sérénité et Confort au Cœur de la Ville</p>
+    <a href="/reservation" class="btn-reserve" style="text-decoration: none;">Découvrir nos séjours</a>
+</div>
+
+<div id="chambres">
+    <h2 class="section-title">Nos Hébergements</h2>
+    <div class="grid">
+        {% if chambres %}
+            {% for chambre in chambres %}
+                <div class="card-hotel">
+                    <img src="{{ chambre[5] }}" class="card-img" alt="{{ chambre[1] }}">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ chambre[1] }}</h3>
+                        <p style="color: #aaa; font-size: 13px;">Catégorie : {{ chambre[2] }}</p>
+                        <div class="card-price">{{ chambre[3] }} DH <span style="font-size: 11px; color: #888;">/ nuit</span></div>
+                        <a href="/reservation" class="btn-card">Réserver cette chambre</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center; grid-column: 1/-1;">Chargement des disponibilités...</p>
+        {% endif %}
+    </div>
+</div>
+
+<div id="services" style="border-top: 1px solid #2a3546;">
+    <h2 class="section-title">Nos Services Exclusifs</h2>
+    <div class="grid">
+        <div class="service-card" style="text-align: center;">
+            <h3>Spa & Bien-être</h3>
+            <p style="color: #aaa; font-size: 13px;">Hammams traditionnels, massages relaxants et soins haut de gamme.</p>
+        </div>
+        <div class="service-card" style="text-align: center;">
+            <h3>Gastronomie & Restaurant</h3>
+            <p style="color: #aaa; font-size: 13px;">Cuisine raffinée marocaine et internationale préparée par des chefs.</p>
+        </div>
+        <div class="service-card" style="text-align: center;">
+            <h3>Piscine & Lounge</h3>
+            <p style="color: #aaa; font-size: 13px;">Piscine extérieure chauffée avec vue panoramique et espace détente.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
