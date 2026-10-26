@@ -4,40 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>White Lotus Hotel</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Georgia', serif; background: #0f141d; color: #f4f4f9; }
-        
-        header { background: rgba(15, 20, 29, 0.98); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #d4af37; position: fixed; top: 0; width: 100%; z-index: 999; }
-        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #d4af37; font-size: 20px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
-        .logo-icon { width: 28px; height: 28px; fill: #d4af37; }
-        
-        nav a { color: #fff; text-decoration: none; margin-left: 25px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: #d4af37; }
-        .btn-reserve { background: #d4af37; color: #0f141d !important; padding: 8px 16px; font-weight: bold; }
-        .btn-reserve:hover { background: #fff; }
-
-        .main-wrapper { padding-top: 70px; }
-        footer { background: #0a0d13; color: #888; text-align: center; padding: 25px; font-size: 12px; border-top: 1px solid #222; }
-    </style>
+    <!-- Le style est maintenant dans un fichier séparé : static/css/style.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
-        <a href="/" class="logo-container">
-            <svg class="logo-icon" viewBox="0 0 24 24"><path d="M12 3c-1.5 2.5-3 5.5-3 8 0 2.5 1.5 4 3 4s3-1.5 3-4c0-2.5-1.5-5.5-3-8zm-5 4c-1.5 2-3 4.5-3 6.5 0 2.5 2 4.5 5 4.5 1 0 2-.3 3-.8-1.5-1.2-2.5-3-2.5-5.2 0-2 1-3.8 2.5-5-2-.3-3.8.3-5 2zm10 0c-1.2-1.7-3-2.3-5-2 1.5 1.2 2.5 3 2.5 5 0 2.2-1 4-2.5 5.2 1 .5 2 .8 3 .8 3 0 5-2 5-4.5 0-2-1.5-4.5-3-6.5zm-13 8.5c-1 1-1.5 2.2-1.5 3.5 0 2 2 3 4.5 3 2 0 3.8-.7 5-2-1.8 0-3.5-.8-4.8-2-.9-.8-1.8-1.5-3.2-2.5zm16 0c-1.4 1-2.3 1.7-3.2 2.5-1.3 1.2-3 2-4.8 2 1.2 1.3 3 2 5 2 2.5 0 4.5-1 4.5-3 0-1.3-.5-2.5-1.5-3.5z"/></svg>
-            White Lotus
-        </a>
+        <a href="/" class="logo">🪷 White Lotus</a>
         <nav>
             <a href="/">Accueil</a>
-            <a href="/#chambres">Chambres & Suites</a>
+            <a href="/#chambres">Chambres et suites</a>
             <a href="/#services">Services</a>
-            <a href="/reservation" class="btn-reserve">Réserver</a>
+            <a href="/reservation" class="btn">Réserver</a>
         </nav>
     </header>
 
     <div class="main-wrapper">
+        <!-- Chaque page vient remplir cet espace -->
         {% block content %}{% endblock %}
     </div>
 
