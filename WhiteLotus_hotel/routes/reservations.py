@@ -12,6 +12,9 @@ def effectuer_reservation():
         date_arrivee = request.form['date_arrivee']
         date_depart = request.form['date_depart']
 
+        # Vérification : le nom ne doit pas être vide et le départ doit venir après l'arrivée
+        if nom.strip() == "" or email.strip() == "" or date_depart <= date_arrivee:
+            return "Erreur : données invalides. Vérifiez le nom, l'email et les dates."
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
 
